@@ -22,5 +22,6 @@ let printerFunction = () => {
     }
 };
 
-
 printer.addEventListener("click", printerFunction);
+
+//test

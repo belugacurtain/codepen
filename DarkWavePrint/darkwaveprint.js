@@ -13,8 +13,6 @@ let printerFunction = () => {
     paperShadow.classList.toggle("is-paper-shadow-animated");
     text.classList.toggle("is-text-animated");
 
-    a.loop = true;
-
     if (a.paused) a.play();
     else {
         a.pause();
@@ -23,5 +21,3 @@ let printerFunction = () => {
 };
 
 printer.addEventListener("click", printerFunction);
-
-//test

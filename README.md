@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=wave&color=000000&height=200&section=header&text=Gunami%20CodePen%20Source%20List&fontSize=30&fontColor=ffffff)
+![header](https://capsule-render.vercel.app/api?type=wave&color=0:000000,100:00FDFA&height=200&section=header&text=Gunami%20CodePen%20Source%20List&fontSize=30&fontColor=ffffff)
 // DarkWavePrint
 - https://codepen.io/ricardoolivaalonso/pen/zYrgJzz (Original)
 - https://gunami4573.github.io/codepen/DarkWavePrint/darkwaveprint.html (Remake)

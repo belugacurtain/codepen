@@ -1,0 +1,763 @@
+@import url("https://fonts.googleapis.com/css3?family=Inter&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: peachpuff;
+}
+
+.cassette-scene,
+.shadow-scene {
+    position: absolute;
+    width: 26vw;
+    height: 6vw;
+    transform: perspective(10000px) rotateX(80deg) rotateZ(40deg) translateZ(-8vw);
+    transition: 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shadow-shape1 {
+    background-color: #d74a4e;
+    opacity: 0.3;
+    box-shadow: 0px 0px 0px 0px black;
+    transition: 0.6s ease;
+    position: absolute;
+    width: 26vw;
+    height: 400%;
+    transform-origin: center;
+    transform: translateZ(0px) translateY(-9.5vw) translateX(0vw);
+}
+
+.shadow-shape2 {
+    background-color: #000000;
+    opacity: 0.3;
+    box-shadow: 0px 0px 0px 0px black;
+    transition: 0.6s ease;
+    position: absolute;
+    width: 16vw;
+    height: 20%;
+    transform-origin: center;
+    transform: translateZ(0px) translateY(2.5vw) translateX(0vw);
+}
+
+.cassette-shape {
+    width: 26vw;
+    height: 1.4vw;
+    position: absolute;
+    transition: 0.6s ease;
+    cursor: pointer;
+}
+.cassette-shape .case-scene {
+    width: 26vw;
+    height: 1.4vw;
+    position: absolute;
+}
+.cassette-shape .case-scene .face {
+    position: absolute;
+}
+.cassette-shape .case-scene .ft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(38, 39, 41, 0.5);
+    width: 26vw;
+    height: 14vw;
+    transform-origin: bottom left;
+    transform: rotateX(-90deg) translateZ(-11.2vw);
+}
+.cassette-shape .case-scene .ft .full-mask {
+    width: 26vw;
+    height: 14vw;
+    background: url("https://s-media-cache-ak0.pinimg.com/originals/0b/1f/03/0b1f03eacd8b96dd32d476680d200ac2.jpg") no-repeat 70% 55%;
+    font-family: "Inter", sans-serif;
+    font-size: 0.88vmax;
+    color: #a6e630;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2vmax 3vmax;
+    clip-path: polygon(0% 0%, 0% 100%, 6vw 14vw, 6vw 6vw, 20vw 6vw, 20vw 8vw, 6vw 8vw, 6vw 14vw, 100% 100%, 100% 0%);
+    z-index: 52;
+}
+.cassette-shape .case-scene .bk {
+    background-color: #0b0b0d;
+    width: 26vw;
+    height: 14vw;
+    transform-origin: top left;
+    transform: rotateX(-90deg) rotateY(180deg) translateX(-26vw) translateY(-14vw);
+}
+.cassette-shape .case-scene .rt {
+    background: url("https://s-media-cache-ak0.pinimg.com/originals/0b/1f/03/0b1f03eacd8b96dd32d476680d200ac2.jpg") no-repeat 82% 55%;
+    border-left: 0.125vw solid black;
+    width: 2.8vw;
+    height: 14vw;
+    transform-origin: top left;
+    transform: rotateY(90deg) rotateZ(-90deg) translateZ(26vw) translateX(-2.8vw) translateY(-14vw);
+}
+.cassette-shape .case-scene .lt {
+    background-color: #262729;
+    border-right: 0.125vw solid #0d0e0f;
+    width: 2.8vw;
+    height: 14vw;
+    transform-origin: top left;
+    transform: rotateY(-90deg) rotateZ(90deg) translateY(-14vw);
+}
+.cassette-shape .case-scene .tp {
+    background: url("https://s-media-cache-ak0.pinimg.com/originals/0b/1f/03/0b1f03eacd8b96dd32d476680d200ac2.jpg") no-repeat 11% 31%;
+    border-bottom: 0.125vw solid #030303;
+    width: 26vw;
+    height: 2.8vw;
+    transform-origin: top left;
+    transform: translateZ(14vw);
+}
+.cassette-shape .case-scene .bm {
+    background-color: #0b0b0d;
+    width: 26vw;
+    height: 2.8vw;
+    transform-origin: top left;
+    transform: rotateY(180deg) translateX(-26vw);
+}
+.cassette-shape #screw-scene1 {
+    transform: translate3d(1.5vw, 2.9vw, 13vw);
+}
+.cassette-shape #screw-scene2 {
+    transform: translate3d(24.5vw, 2.9vw, 13vw);
+}
+.cassette-shape #screw-scene3 {
+    transform: translate3d(1.5vw, 2.9vw, 1vw);
+}
+.cassette-shape #screw-scene4 {
+    transform: translate3d(24.5vw, 2.9vw, 1vw);
+}
+.cassette-shape #screw-scene5 {
+    transform: translate3d(13vw, 3.45vw, 2vw);
+}
+.cassette-shape .screw-scene {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cassette-shape .screw-scene .screw-shape {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: 0;
+    height: 0;
+    transform-origin: 50%;
+    transform: rotateX(0deg) rotateY(-60deg) rotateZ(0deg);
+}
+.cassette-shape .screw-scene [class*=cylinder] .tp {
+    transform: rotateX(90deg) translateY(-50%);
+    border-radius: 50%;
+}
+.cassette-shape .screw-scene [class*=cylinder] .tp .photon-shader {
+    border-radius: 50%;
+}
+.cassette-shape .screw-scene [class*=cylinder] .bm {
+    transform: rotateX(-90deg) translateY(-50%);
+    border-radius: 50%;
+    top: 100%;
+}
+.cassette-shape .screw-scene [class*=cylinder] .bm .photon-shader {
+    border-radius: 50%;
+}
+.cassette-shape .screw-scene .cyl-1 {
+    width: 0.6vw;
+    height: 0.3vw;
+}
+.cassette-shape .screw-scene .cyl-1 .photon-shader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.cassette-shape .screw-scene .cyl-1 .screw-face {
+    position: absolute;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    transform-origin: 0 0;
+    backface-visibility: hidden;
+    background-size: 100% 100% !important;
+    background-position: center;
+}
+.cassette-shape .screw-scene .cyl-1 .tp {
+    width: 0.6vw;
+    height: 0.6vw;
+    background-color: rgba(11, 11, 13, 0.363);
+}
+.cassette-shape .screw-scene .cyl-1 .bm {
+    width: 0.6vw;
+    height: 0.6vw;
+    background-color: rgba(11, 11, 13, 0.363);
+}
+.cassette-shape .screw-scene .cyl-1 .side {
+    width: 0.1619460846vw;
+    height: 0.3vw;
+    left: 50%;
+}
+.cassette-shape .screw-scene .cyl-1 .s0 {
+    transform: rotateY(12.8571428571deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.008);
+}
+.cassette-shape .screw-scene .cyl-1 .s1 {
+    transform: rotateY(38.5714285714deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.05);
+}
+.cassette-shape .screw-scene .cyl-1 .s2 {
+    transform: rotateY(64.2857142857deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.01);
+}
+.cassette-shape .screw-scene .cyl-1 .s3 {
+    transform: rotateY(90deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.063);
+}
+.cassette-shape .screw-scene .cyl-1 .s4 {
+    transform: rotateY(115.7142857143deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.243);
+}
+.cassette-shape .screw-scene .cyl-1 .s5 {
+    transform: rotateY(141.4285714286deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.365);
+}
+.cassette-shape .screw-scene .cyl-1 .s6 {
+    transform: rotateY(167.1428571429deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.482);
+}
+.cassette-shape .screw-scene .cyl-1 .s7 {
+    transform: rotateY(192.8571428571deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.592);
+}
+.cassette-shape .screw-scene .cyl-1 .s8 {
+    transform: rotateY(218.5714285714deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.65);
+}
+.cassette-shape .screw-scene .cyl-1 .s9 {
+    transform: rotateY(244.2857142857deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.59);
+}
+.cassette-shape .screw-scene .cyl-1 .s10 {
+    transform: rotateY(270deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.063);
+}
+.cassette-shape .screw-scene .cyl-1 .s11 {
+    transform: rotateY(295.7142857143deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.357);
+}
+.cassette-shape .screw-scene .cyl-1 .s12 {
+    transform: rotateY(321.4285714286deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.235);
+}
+.cassette-shape .screw-scene .cyl-1 .s13 {
+    transform: rotateY(347.1428571429deg) translate3D(-50%, 0, 0.275vw);
+    background-color: rgba(11, 11, 13, 0.118);
+}
+.cassette-shape .cover-scene {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: auto;
+    height: auto;
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(13vw, 2.4vw, 1.5vw);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.cassette-shape .cover-scene .cover-shape {
+    position: absolute;
+    transform-style: preserve-3d;
+}
+.cassette-shape .cover-scene .cover-face {
+    position: absolute;
+    transform-style: preserve-3d;
+}
+.cassette-shape .cover-scene .cover-face-wrapper {
+    position: absolute;
+    transform-style: preserve-3d;
+}
+.cassette-shape .cover-scene .cover-shape {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: 0;
+    height: 0;
+    transform-origin: 50%;
+}
+.cassette-shape .cover-scene .cover-shape .cover-face {
+    overflow: hidden;
+    transform-origin: 0 0;
+    backface-visibility: hidden;
+    background-size: 100% 100% !important;
+    background-position: center;
+    background-color: #313235;
+}
+.cassette-shape .cover-scene .cover-shape .cover-face-wrapper {
+    overflow: hidden;
+    transform-origin: 0 0;
+    backface-visibility: hidden;
+}
+.cassette-shape .cover-scene .cover-shape .cover-face-wrapper .cover-face {
+    left: 100%;
+    width: 100%;
+    height: 100%;
+}
+.cassette-shape .cover-scene .cover-shape.pri-1 {
+    transform: translate3D(-7.4vw, 0vw, 0vw) rotateX(-90deg) rotateZ(0deg) rotateY(-90deg);
+    opacity: 1;
+    width: 2vw;
+    height: 3vw;
+    opacity: 1;
+}
+.cassette-shape .cover-scene .cover-shape.pri-1 .rt {
+    width: 1vw;
+    height: 3vw;
+}
+.cassette-shape .cover-scene .cover-shape.pri-1 .rt .cover-face {
+    transform: rotateZ(-18.4349488229deg);
+    height: 3.1622776602vw;
+}
+.cassette-shape .cover-scene .cover-shape.pri-1 .lt {
+    width: 1vw;
+    height: 3vw;
+}
+.cassette-shape .cover-scene .cover-shape.pri-1 .lt .cover-face {
+    transform: rotateZ(18.4349488229deg);
+    height: 3.1622776602vw;
+}
+.cassette-shape .cover-scene .cover-shape.pri-1 .ft {
+    height: 3.1622776602vw;
+    transform: translateZ(-0.5vw) rotateX(18.4349488229deg);
+    background-color: #0b0b0d;
+}
+.cassette-shape .cover-scene .cover-shape.pri-1 .bk {
+    transform: translateZ(-0.5vw) rotateY(180deg);
+}
+.cassette-shape .cover-scene .cover-shape.pri-1 .bm {
+    width: 2vw;
+    height: 1vw;
+    background-color: #0b0b0d;
+}
+.cassette-shape .cover-scene .cover-shape.cub-1 {
+    transform: translate3D(0vw, 0vw, 0vw) rotateX(-90deg) rotateZ(0deg) rotateY(90deg);
+    opacity: 1;
+    width: 2vw;
+    height: 3vw;
+}
+.cassette-shape .cover-scene .cover-shape.cub-1 .ft {
+    transform: translateZ(6.9vw);
+}
+.cassette-shape .cover-scene .cover-shape.cub-1 .bk {
+    transform: translateZ(-6.9vw) rotateY(180deg);
+}
+.cassette-shape .cover-scene .cover-shape.cub-1 .rt {
+    width: 13.8vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cassette-shape .cover-scene .cover-shape.cub-1 .rt .gunami_name{
+    display:block;
+    width:auto;
+    position:absolute;
+    top:44%;
+    left:calc(50% - 40px);
+    font-size:20px;
+    color:white;
+    line-height:20px;
+}
+.cassette-shape .cover-scene .cover-shape.cub-1 .rt::before {
+    content: "";
+    position: absolute;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background-color: #000000;
+    opacity: 0.5;
+    bottom: 0.5rem;
+    left: 2.5rem;
+    bottom: 0.5vw;
+    left: 2.5vw;
+}
+.cassette-shape .cover-scene .cover-shape.cub-1 .rt::after {
+    content: "";
+    position: absolute;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background-color: #000000;
+    opacity: 0.5;
+    bottom: 0.5rem;
+    right: 2.5rem;
+    bottom: 0.5vw;
+    right: 2.5vw;
+}
+.cassette-shape .cover-scene .cover-shape.cub-1 .lt {
+    width: 13.8vw;
+    height: 3vw;
+}
+.cassette-shape .cover-scene .cover-shape.cub-1 .tp {
+    width: 2vw;
+    height: 13.8vw;
+    background-color: #1b1c1e;
+}
+.cassette-shape .cover-scene .cover-shape.cub-1 .bm {
+    width: 2vw;
+    height: 13.8vw;
+    background-color: #0b0b0d;
+}
+.cassette-shape .cover-scene .cover-shape.pri-2 {
+    transform: translate3D(7.4vw, 0vw, 0vw) rotateX(-90deg) rotateZ(0deg) rotateY(90deg);
+    opacity: 1;
+    width: 2vw;
+    height: 3vw;
+    opacity: 1;
+}
+.cassette-shape .cover-scene .cover-shape.pri-2 .rt {
+    width: 1vw;
+    height: 3vw;
+}
+.cassette-shape .cover-scene .cover-shape.pri-2 .rt .cover-face {
+    transform: rotateZ(-18.4349488229deg);
+    height: 3.1622776602vw;
+}
+.cassette-shape .cover-scene .cover-shape.pri-2 .lt {
+    width: 1vw;
+    height: 3vw;
+}
+.cassette-shape .cover-scene .cover-shape.pri-2 .lt .cover-face {
+    transform: rotateZ(18.4349488229deg);
+    height: 3.1622776602vw;
+}
+.cassette-shape .cover-scene .cover-shape.pri-2 .ft {
+    height: 3.1622776602vw;
+    transform: translateZ(-0.5vw) rotateX(18.4349488229deg);
+    background-color: #0b0b0d;
+}
+.cassette-shape .cover-scene .cover-shape.pri-2 .bk {
+    transform: translateZ(-0.5vw) rotateY(180deg);
+}
+.cassette-shape .cover-scene .cover-shape.pri-2 .bm {
+    width: 2vw;
+    height: 1vw;
+    background-color: #0b0b0d;
+}
+.cassette-shape .cover-scene [class*=prism] .ft {
+    width: 100%;
+    height: 100%;
+}
+.cassette-shape .cover-scene [class*=prism] .bk {
+    width: 100%;
+    height: 100%;
+    left: 100%;
+}
+.cassette-shape .cover-scene [class*=prism] .rt {
+    transform: rotateY(-90deg) translateX(-50%);
+}
+.cassette-shape .cover-scene [class*=prism] .rt .cover-face {
+    left: -100%;
+    transform-origin: 100% 0;
+}
+.cassette-shape .cover-scene [class*=prism] .lt {
+    transform: rotateY(90deg) translateX(-50%);
+    left: 100%;
+}
+.cassette-shape .cover-scene [class*=prism] .bm {
+    transform: rotateX(-90deg) translateY(-50%);
+    top: 100%;
+}
+.cassette-shape .cover-scene [class*=cuboid] .ft {
+    width: 100%;
+    height: 100%;
+}
+.cassette-shape .cover-scene [class*=cuboid] .bk {
+    width: 100%;
+    height: 100%;
+    left: 100%;
+}
+.cassette-shape .cover-scene [class*=cuboid] .rt {
+    transform: rotateY(-90deg) translateX(-50%);
+}
+.cassette-shape .cover-scene [class*=cuboid] .lt {
+    transform: rotateY(90deg) translateX(-50%);
+    left: 100%;
+}
+.cassette-shape .cover-scene [class*=cuboid] .tp {
+    transform: rotateX(90deg) translateY(-50%);
+}
+.cassette-shape .cover-scene [class*=cuboid] .bm {
+    transform: rotateX(-90deg) translateY(-50%);
+    top: 100%;
+}
+.cassette-shape #reel-scene1 {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(17.5vw, 2.2vw, 7vw);
+}
+.cassette-shape #reel-scene2 {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(8.5vw, 2.2vw, 7vw);
+}
+.cassette-shape .reel-scene {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cassette-shape .reel-scene .reel-shape {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: 0;
+    height: 0;
+    transform-origin: 50%;
+}
+.cassette-shape .reel-scene .reel-face {
+    box-shadow: inset 0 0 0 1px #000000;
+    position: absolute;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    transform-origin: 0 0;
+    backface-visibility: hidden;
+    background-size: 100% 100% !important;
+    background-position: center;
+    background-color: white;
+}
+.cassette-shape .reel-scene [class*=cylinder] .tp {
+    transform: rotateX(90deg) translateY(-50%);
+    border-radius: 50%;
+    background-color: white;
+}
+.cassette-shape .reel-scene [class*=cylinder] .bm {
+    transform: rotateX(-90deg) translateY(-50%);
+    border-radius: 50%;
+    top: 100%;
+    background-color: white;
+}
+.cassette-shape .reel-scene .cyl-2 {
+    opacity: 1;
+    width: 3vw;
+    height: 1vw;
+    animation-name: spin;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes spin {
+    from {
+        transform: rotatey(0deg);
+    }
+    to {
+        transform: rotatey(360deg);
+    }
+}
+.cassette-shape .reel-scene .cyl-2 .tp {
+    width: 3vw;
+    height: 3vw;
+}
+.cassette-shape .reel-scene .cyl-2 .bm {
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.cassette-shape .reel-scene .cyl-2 .bm .reel-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    position: relative;
+    border: 4px solid #000000;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cassette-shape .reel-scene .cyl-2 .bm .reel-circle .reel-teeth {
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cassette-shape .reel-scene .cyl-2 .bm .reel-circle .reel-teeth:after {
+    width: 9px;
+    height: 9px;
+    background: #000000;
+    border-radius: 3px;
+    position: absolute;
+    content: "";
+    top: -15px;
+    top: -200%;
+}
+.cassette-shape .reel-scene .cyl-2 .bm .reel-circle .reel-teeth:before {
+    width: 9px;
+    height: 9px;
+    background: #000000;
+    border-radius: 3px;
+    position: absolute;
+    content: "";
+    top: 11px;
+    top: 200%;
+}
+.cassette-shape .reel-scene .cyl-2 .bm .reel-circle .tooth0 {
+    transform: rotate(0deg);
+}
+.cassette-shape .reel-scene .cyl-2 .bm .reel-circle .tooth1 {
+    transform: rotate(60deg);
+}
+.cassette-shape .reel-scene .cyl-2 .bm .reel-circle .tooth2 {
+    transform: rotate(120deg);
+}
+.cassette-shape .reel-scene .cyl-2 .side {
+    width: 0.500153321vw;
+    height: 1vw;
+    left: 50%;
+}
+.cassette-shape .reel-scene .cyl-2 .s0 {
+    transform: rotateY(9deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s1 {
+    transform: rotateY(27deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s2 {
+    transform: rotateY(45deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s3 {
+    transform: rotateY(63deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s4 {
+    transform: rotateY(81deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s5 {
+    transform: rotateY(99deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s6 {
+    transform: rotateY(117deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s7 {
+    transform: rotateY(135deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s8 {
+    transform: rotateY(153deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s9 {
+    transform: rotateY(171deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s10 {
+    transform: rotateY(189deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s11 {
+    transform: rotateY(207deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s12 {
+    transform: rotateY(225deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s13 {
+    transform: rotateY(243deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s14 {
+    transform: rotateY(261deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s15 {
+    transform: rotateY(279deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s16 {
+    transform: rotateY(297deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s17 {
+    transform: rotateY(315deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s18 {
+    transform: rotateY(333deg) translate3D(-50%, 0, 1.475vw);
+}
+.cassette-shape .reel-scene .cyl-2 .s19 {
+    transform: rotateY(351deg) translate3D(-50%, 0, 1.475vw);
+}
+
+/*--------------------------*/
+@keyframes rise {
+    0% {
+        transform: perspective(10000px) rotateX(80deg) rotateZ(40deg) translateZ(-7vw);
+    }
+    100% {
+        transform: perspective(10000px) rotateX(80deg) rotateZ(40deg) translateZ(-5vw);
+    }
+}
+@keyframes shadow_merge1 {
+    0% {
+        opacity: 0.2;
+        box-shadow: 0px 0px 20px 10px #d74a4e;
+    }
+    50% {
+        opacity: 0.3;
+        box-shadow: 0px 0px 0px 0px #d74a4e;
+    }
+    100% {
+        opacity: 0.2;
+        box-shadow: 0px 0px 20px 10px #d74a4e;
+    }
+}
+@keyframes shadow_merge2 {
+    0% {
+        opacity: 0.2;
+        box-shadow: 0px 0px 20px 10px black;
+    }
+    50% {
+        opacity: 0.3;
+        box-shadow: 0px 0px 0px 0px black;
+    }
+    100% {
+        opacity: 0.2;
+        box-shadow: 0px 0px 20px 10px black;
+    }
+}
+.cassette-scene {
+    animation-name: rise;
+    animation-delay: 0s;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction:alternate;
+}
+
+.shadow-shape1 {
+    animation-name: shadow_merge1;
+    animation-delay: 0s;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction:alternate;
+
+}
+
+.shadow-shape2 {
+    animation-name: shadow_merge2;
+    animation-delay: 0s;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction:alternate;
+
+}

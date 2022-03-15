@@ -7,3 +7,4 @@ Gunami CodePen Source List
 // WWCT
 - https://codepen.io/maxym11/pen/MWyKrRZ (Original)
 - https://gunami4573.github.io/codepen/WWCT/tape.html (Remake)
+<a href="www.naver.com">naver</a>

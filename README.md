@@ -6,3 +6,7 @@
 // WWCT
 - https://codepen.io/maxym11/pen/MWyKrRZ (Original)
 - https://gunami4573.github.io/codepen/WWCT/tape.html (Remake)
+
+// WallyPiano
+- https://codepen.io/allanesquina/pen/gONqpX (Original)
+- https://gunami4573.github.io/codepen/WallyPiano/wallypiano.html (Remake)

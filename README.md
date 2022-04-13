@@ -12,3 +12,7 @@
 // WallyPiano
 - https://codepen.io/allanesquina/pen/gONqpX (Original)
 - https://gunami4573.github.io/codepen/WallyPiano/wallypiano.html (Remake)
+
+// Pizza
+- https://codepen.io/TheMOZZARELLA/pen/oNpqgra (Original)
+- https://gunami4573.github.io/codepen/Pizza/pizza.html (Remake)

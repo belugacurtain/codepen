@@ -10,7 +10,7 @@ const TK_TUBE_RADIUS = 0.3;
 const COIL_TUBE_RADIUS = 0.2;
 const TK_POINTS_COUNT = 200;
 const TURNS_COUNT = 20.0;
-const RAY_COLOR = '#000';
+const RAY_COLOR = 'rgba(87, 49, 127, 0.85)';
 const ALBEDO0_URL = './images/tulip.png';
 const ALBEDO1_URL = 'https://images.unsplash.com/photo-1585936529565-1871537209e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGZpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60';
 const ENV_URL = './images/greenSill.png';
@@ -24,9 +24,9 @@ const renderer = new THREE.WebGLRenderer({
 })
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, 2, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(75, 1, 0.5, 150);
 const controls = new OrbitControls(camera, renderer.domElement);
-camera.position.set(0, 2, 4);
+camera.position.set(-6, 0, 5);
 controls.target.set(0, 2, 0);
 controls.enableDamping = true;
 controls.autoRotate = true;
@@ -146,9 +146,9 @@ const light_src = new THREE.Mesh(
 light_src.position.set(0, 1, 0)
 light_src.lookAt(new THREE.Vector3())
 composer.addPass(new EffectPass(camera, new GodRaysEffect(camera, light_src, {
-    density: 1.0,
-    weight: 20,
-    decay: 0.92
+    density: 3,
+    weight: 9,
+    decay: 0.8
 })))
 
 renderer.setAnimationLoop(() => {

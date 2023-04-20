@@ -11,9 +11,9 @@ const COIL_TUBE_RADIUS = 0.2;
 const TK_POINTS_COUNT = 200;
 const TURNS_COUNT = 20.0;
 const RAY_COLOR = '#000';
-const ALBEDO0_URL = '/TulipRing/images/tulip.png';
+const ALBEDO0_URL = './images/tulip.png';
 const ALBEDO1_URL = 'https://images.unsplash.com/photo-1585936529565-1871537209e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGZpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60';
-const ENV_URL = '/TulipRing/images/greenSill.png';
+const ENV_URL = './images/greenSill.png';
 
 // Main
 const renderer = new THREE.WebGLRenderer({

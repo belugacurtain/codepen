@@ -16,3 +16,7 @@
 // Pizza
 - https://codepen.io/TheMOZZARELLA/pen/oNpqgra (Original)
 - https://gunami4573.github.io/codepen/Pizza/pizza.html (Remake)
+
+// TulipRing
+- https://codepen.io/ycw/pen/rNKywXG (Original)
+- https://gunami4573.github.io/codepen/TulipRing/tulipring.html (Remake)

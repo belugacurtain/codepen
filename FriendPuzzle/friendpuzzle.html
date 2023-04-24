@@ -7,19 +7,151 @@
     <title>FriendPuzzle - Jisu</title>
     <style>
         *{margin:0;padding:0;}
+        body{display:block;width:100%;height:100vh;box-sizing:border-box;}
         canvas{display:block; width:100%; height:100vh;background:black;cursor:grab;}
     </style>
 </head>
 <body>
-<script async src="https://ga.jspm.io/npm:es-module-shims@1.4.3/dist/es-module-shims.js" crossorigin="anonymous"></script>
-<script type='importmap-shim'>
+<script async src="https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js" crossorigin="anonymous"></script>
+<script defer type='importmap-shim'>
     {
         "imports": {
-            "three": "https://unpkg.com/three@0.139.0/build/three.module.js",
-            "three/": "https://unpkg.com/three@0.139.0/"
+            "three": "https://unpkg.com/three@0.146.0/build/three.module.js",
+            "three/": "https://unpkg.com/three@0.146.0/"
         }
     }
     </script>
-<script defer type='module-shim' src="friendpuzzle.js"></script>
+<script type='module-shim'>
+    import * as THREE from 'three'
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
+
+const renderer = new THREE.WebGL1Renderer();
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 1, 0.5, 150);
+const controls = new OrbitControls(camera, renderer.domElement);
+
+camera.position.set(0, 0, 1);
+controls.enableDamping = true;
+scene.fog = new THREE.Fog('black', 1, 2);
+
+const light = new THREE.DirectionalLight('con', 2);
+light.position.set(0, 1, 0);
+scene.add(light);
+scene.add(new THREE.AmbientLight());
+
+const {mat} = await (async function () {
+    const img_url = './images/friendpuzzle_jisu.png';
+    const tex = await new THREE.TextureLoader().loadAsync(img_url);
+    const img = tex.image;
+    const img_ratio = img.width / img.height;
+
+    const n_cell_y = 16;
+    const grid_sz = new THREE.Vector2(Math.round(n_cell_y * img_ratio), n_cell_y);
+    const grid_ratio = grid_sz.width / grid_sz.height;
+    const plane_sz = new THREE.Vector2(grid_ratio, 1);
+    const inst_sz = plane_sz.clone().divide(grid_sz);
+    const n_inst = grid_sz.x * grid_sz.y;
+
+    const geom = new THREE.PlaneGeometry(inst_sz.x, inst_sz.y);
+    const inst_ids = new Float32Array(n_inst).map((_, i) => i);
+    geom.setAttribute('inst_id', new THREE.InstancedBufferAttribute(inst_ids, 1, false, 1));
+    const vert_ids = new Float32Array([0, 1, 2, 3]);
+    geom.setAttribute('vert_id', new THREE.BufferAttribute(vert_ids, 1, false));
+
+    const shader = THREE.ShaderLib.lambert;
+    const mat = new THREE.ShaderMaterial({
+        lights: true,
+        fog: true,
+        side: THREE.DoubleSide,
+        defines: {USE_UV: true, USE_MAP: true},
+        uniforms: THREE.UniformsUtils.merge([shader.uniforms, {
+            map: {value: tex},
+            time: {value: 0},
+            grid_sz: {value: grid_sz},
+            plane_sz: {value: plane_sz},
+            inst_sz: {value: inst_sz},
+            n_inst: {value: n_inst},
+        }]),
+        vertexShader: `
+        uniform float time;
+        attribute float inst_id;
+        attribute float vert_id;
+        uniform vec2 grid_sz;
+        uniform vec2 plane_sz;
+        uniform vec2 inst_sz;
+        uniform float n_inst;
+        #include <rot_arb_axis>
+        ` + shader.vertexShader.replace('void main() {', `
+        void main() {
+          vec2 grid;
+          grid.x = mod( inst_id, grid_sz.x );
+          grid.y = floor( inst_id / grid_sz.x );
+          vec2 grid_sn = 2.0 * ( grid / ( grid_sz - 1.0 ) - 0.5 );
+          vec3 rot_axis = vec3( 1, 1, 0 );
+          float rot_angle = sin( time + ( grid_sn.x + grid_sn.y ) * PI );
+          mat4 rot_mat = rotationMatrix( rot_axis, rot_angle );
+        `).replace('#include <uv_vertex>', /* uv */ `
+        #ifdef USE_UV
+          float u = ( grid.x + mod( vert_id, 2.0 ) ) / grid_sz.x;
+          float v = ( grid.y + float( vert_id <= 1.0 ) ) / grid_sz.y;
+          vUv = ( uvTransform * vec3( u, v, 1 ) ).xy;
+        #endif
+        `).replace('#include <beginnormal_vertex>', /* normal */ `
+        vec3 objectNormal = normalize( ( rot_mat * vec4( normal, 1.0 ) ).xyz );
+        `).replace('#include <project_vertex>', /* rot,pos */ `
+        vec4 mvPosition = vec4( transformed, 1.0 );
+        // mvPosition = rot_mat * mvPosition;
+        mvPosition.x += - 0.5 * plane_sz.x + inst_sz.x * ( 0.5 + grid.x );
+        mvPosition.y += - 0.5 * plane_sz.y + inst_sz.y * ( 0.5 + grid.y );
+        vec2 div = vec2( 20.0, 20.0 );
+        vec2 div_s = abs( mod( grid, div ) / div - 0.5 );
+        mvPosition.z += -1.5 + 2.0 * sin( time + ( div_s.x + div_s.y + inst_id / n_inst ) * PI );
+        mvPosition.z = min( mvPosition.z, 0.0 );
+        mvPosition.xy += sin( time + inst_id / n_inst * PI2 ) * pow( mvPosition.z, 2.0 );
+        mvPosition = modelViewMatrix * mvPosition;
+        gl_Position = projectionMatrix * mvPosition;
+        `),
+        fragmentShader: shader.fragmentShader
+    });
+
+    const mesh = new THREE.InstancedMesh(geom, mat, n_inst);
+    const $mat_i = new THREE.Matrix4();
+    for (let i = 0; i < n_inst; ++i) mesh.setMatrixAt(i, $mat_i);
+    scene.add(mesh); // mesh.matrix -> modelMatrix
+    return {mat};
+})();
+
+renderer.setAnimationLoop((t) => {
+    renderer.render(scene, camera);
+    controls.update();
+    if (mat) mat.uniforms.time.value = t / 1e3;
+});
+
+function resize(w, h, dpr = devicePixelRatio) {
+    renderer.setPixelRatio(dpr);
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+}
+
+addEventListener('resize', () => resize(innerWidth, innerHeight));
+dispatchEvent(new Event('resize'));
+document.body.prepend(renderer.domElement);
+
+THREE.ShaderChunk['rot_arb_axis'] = `
+    mat4 rotationMatrix(vec3 axis, float angle)
+    {
+        axis = normalize(axis);
+        float s = sin(angle);
+        float c = cos(angle);
+        float oc = 1.0 - c;
+
+        return mat4(oc * axis.x * axis.x + c,           oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s,  0.0,
+                    oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s,  0.0,
+                    oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c,           0.0,
+                    0.0,                                0.0,                                0.0,                                1.0);
+    }
+`;
+</script>
 </body>
 </html>

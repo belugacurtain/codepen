@@ -2,7 +2,6 @@
 
 ![header](https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:FFFFFF&height=100&section=header&text=Gunami%20CodePen%20Remake&fontSize=30&fontColor=000000&animation=scaleIn&strokeWidth=2&stroke=FFFFFF)
 
-
 🚀 FriendPuzzle(friend jisu) : [Original](https://codepen.io/ycw/pen/BaJVYyb) / [Remake](https://belugacurtain.github.io/codepen/FriendPuzzle/friendpuzzle.html)
 <br/>
 🚀 TulipRing : [Original](https://codepen.io/ycw/pen/rNKywXG) / [Remake](https://belugacurtain.github.io/codepen/TulipRing/tulipring.html)

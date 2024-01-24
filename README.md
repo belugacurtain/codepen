@@ -2,24 +2,24 @@
 
 // FriendPuzzle(friend jisu)
 - https://codepen.io/ycw/pen/BaJVYyb (Original)
-- https://gunami4573.github.io/codepen/FriendPuzzle/friendpuzzle.html (Remake)
+- https://belugacurtain.github.io/codepen/FriendPuzzle/friendpuzzle.html (Remake)
 
 // TulipRing
 - https://codepen.io/ycw/pen/rNKywXG (Original)
-- https://gunami4573.github.io/codepen/TulipRing/tulipring.html (Remake)
+- https://belugacurtain.github.io/codepen/TulipRing/tulipring.html (Remake)
 
 // DarkWavePrint
 - https://codepen.io/ricardoolivaalonso/pen/zYrgJzz (Original)
-- https://gunami4573.github.io/codepen/DarkWavePrint/darkwaveprint.html (Remake)
+- https://belugacurtain.github.io/codepen/DarkWavePrint/darkwaveprint.html (Remake)
 
 // WWCT
 - https://codepen.io/maxym11/pen/MWyKrRZ (Original)
-- https://gunami4573.github.io/codepen/WWCT/tape.html (Remake)
+- https://belugacurtain.github.io/codepen/WWCT/tape.html (Remake)
 
 // WallyPiano
 - https://codepen.io/allanesquina/pen/gONqpX (Original)
-- https://gunami4573.github.io/codepen/WallyPiano/wallypiano.html (Remake)
+- https://belugacurtain.github.io/codepen/WallyPiano/wallypiano.html (Remake)
 
 // Pizza
 - https://codepen.io/TheMOZZARELLA/pen/oNpqgra (Original)
-- https://gunami4573.github.io/codepen/Pizza/pizza.html (Remake)
+- https://belugacurtain.github.io/codepen/Pizza/pizza.html (Remake)
